@@ -1,12 +1,15 @@
 # Install Jellyfin for Samsung TV
 
-This project simplifies the installation of [Jellyfin for Samsung TV](https://github.com/jellyfin/jellyfin-tizen) by automating the environment setup using Docker.
+This project makes it easy to install [Jellyfin for Samsung TV](https://github.com/jellyfin/jellyfin-tizen) with a single pre-configured docker container.
 
-Samsung TVs have been using Tizen OS since 2015. While the Jellyfin app is stable and officially supported, [it has not been available in the Samsung App Store since 2021](https://github.com/jellyfin/jellyfin-tizen/issues/94).
+Jellyfin has yet to make it onto the Samsung App store, [but active effort is under way to get it there](https://github.com/jellyfin/jellyfin-tizen/issues/222#issuecomment-3459574549).
 
-With this script, you can install Jellyfin with just one command once your computer and TV are properly configured.
+## Configure Computer (PC, Laptop, etc...)
 
----
+- Install [Docker](https://www.docker.com/get-started/)
+  * Enable any necessary [Virtualization](https://support.microsoft.com/en-us/windows/enable-virtualization-on-windows-11-pcs-c5578302-6e43-4b4b-a449-8ced115f58e1) features.
+
+- Ensure you are connected to the same network as the TV.
 
 ## Prerequisites
 
@@ -21,6 +24,11 @@ With this script, you can install Jellyfin with just one command once your compu
 
 > [!NOTE]
 > If your TV uses a right-to-left language (e.g., Arabic or Hebrew), the IP address must be entered in reverse order. [More info here.](https://github.com/Georift/install-jellyfin-tizen/issues/30)
+- On the TV, open the "Smart Hub".
+- Select the "Apps" panel.
+- Press the "123" button (or if your remote doesn't have this button, long press the Home button) before typing "12345" with the on-screen keyboard.
+- Toggle the `Developer` button to `On`.
+- Enter the `Host PC IP` address of the computer you're running this container on. [Need help?](docs/troubleshooting.md)
 
 1. On your TV, go to "Apps".
 2. Scroll down to "App Settings" and open it.
@@ -35,9 +43,7 @@ If you experience issues entering the IP address:
 #### b) Uninstall Previous Jellyfin Versions
 If Jellyfin is already installed, [follow the official uninstallation guide](https://www.samsung.com/in/support/tv-audio-video/how-to-uninstall-an-app-on-samsung-smart-tv/).
 
-#### c) Find Your TV’s IP Address
-1. Open the network settings or "About This TV".
-2. Note down the IP address as it will be needed later.
+- Exact instructions will vary with the model of TV. In general you can find the TV's IP address in Settings under Networking or About. Plenty of guides are available with a quick search, however for brevity a short guide with pictures can be found [here](https://www.techsolutions.support.com/how-to/how-to-check-connection-on-samsung-smart-tv-10925).
 
 ---
 
@@ -124,7 +130,9 @@ Tizen application is successfully installed.
 Total time: 00:00:12.205
 ```
 
-Jellyfin should now be available under `Apps -> Downloaded` on your TV.
+At this point you can find Jellyfin on your TV by navigating to Apps -> Downloaded (scroll down), there you'll find Jellyfin.
+
+## Supported Platforms
 
 ---
 
@@ -150,7 +158,15 @@ Currently, **amd64** is supported. ARM devices (such as Raspberry Pi or Mac M1/M
 This project would not be possible without the following:
 
 - [jellyfin-tizen](https://github.com/jellyfin/jellyfin-tizen)
-- [jeppevinkel/jellyfin-tizen-builds](https://github.com/jeppevinkel/jellyfin-tizen-builds)
-- [vitalets/docker-tizen-webos-sdk](https://github.com/vitalets/docker-tizen-webos-sdk)
-- [tizencertificates](https://github.com/sreyemnayr/tizencertificates)
+- [jeppevinkel/jellyfin-tizen-builds](https://github.com/jeppevinkel/jellyfin-tizen-builds) for providing development builds
+- [vitalets/docker-tizen-webos-sdk](https://github.com/vitalets/docker-tizen-webos-sdk) for a docker container preinstalled with the Tizen SDK
 
+## Similar Projects
+
+Here are some similar projects we've been told of, links are provided here without
+any endorsement for their quality.
+
+- [PatrickSt1991/Samsung-Jellyfin-Installer](https://github.com/PatrickSt1991/Samsung-Jellyfin-Installer):
+  * GUI based installed rather than Docker
+
+Feel free to raise a PR with any additional projects.
